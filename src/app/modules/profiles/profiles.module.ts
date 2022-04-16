@@ -9,13 +9,21 @@ import { ProfilesListComponent } from './components/profiles-list/profiles-list.
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ProfilesRoutingModule } from './profiles-routing.module';
 import { ProfilesService } from './services/profiles.service';
+import { UserProfileDetailsComponent } from './components/user-profile-details/user-profile-details.component';
+import { UserProfileIdComponent } from './components/user-profile-id/user-profile-id.component';
+import { UserProfileActivityComponent } from './components/user-profile-activity/user-profile-activity.component';
+import { UserProfileFactsComponent } from './components/user-profile-facts/user-profile-facts.component';
 
 
 
 @NgModule({
   declarations: [
     ProfilesListComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserProfileDetailsComponent,
+    UserProfileIdComponent,
+    UserProfileActivityComponent,
+    UserProfileFactsComponent
   ],
   imports: [
     CommonModule,

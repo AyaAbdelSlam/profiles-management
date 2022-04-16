@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Profile } from '../../models/profile.model';
+import { ToastrActions } from 'src/app/modules/shared/models/toastr-actions.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserProfileConstants } from './user-profile.constants';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,22 +17,25 @@ export class UserProfileComponent implements OnInit {
   ngUnsubscribe = new Subject<void>();
   user: Profile | null;
   tabLoadTimes: Date[] = [];
+  isLoading = false;
 
-
-  constructor(private activatedRoute: ActivatedRoute, private profileService: ProfilesService) { }
+  constructor(private activatedRoute: ActivatedRoute, private profileService: ProfilesService, private _snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       const userCurrentLocalId = Number(params.get('profileId'));
-      this.getUserProfile(userCurrentLocalId);
+      !userCurrentLocalId ? this._snackBar.open(UserProfileConstants.NO_USER_ERROR, ToastrActions.Dissmis)
+        : this.getUserProfile(userCurrentLocalId);
     });
   }
 
   getUserProfile(userId: Number) {
+    this.isLoading = true;
     this.profileService.getProfiles()
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.ngUnsubscribe),)
       .subscribe((result: Profile[]) => {
+        this.isLoading = false;
         this.user = result.find(item => item.localid === userId) ?? null;
       });
   }

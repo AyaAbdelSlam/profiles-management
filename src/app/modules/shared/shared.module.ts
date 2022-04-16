@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialExampleModule } from '../material.module';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { PageBannerComponent } from './components/page-banner/page-banner.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -13,7 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PageBannerComponent
   ],
   imports: [
-    CommonModule, MaterialExampleModule,
+    CommonModule, MaterialExampleModule
 
   ],
   exports: [ProgressSpinnerComponent,

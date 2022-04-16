@@ -8,4 +8,9 @@ export interface Profile {
   phone: string;
   photo: string;
   prefix: string;
+  suffix: string;
+  birthdate: string;
+  email2: string
+  gender: string;
+  loyalty_member_id: string;
 }
