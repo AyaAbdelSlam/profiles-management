@@ -1,101 +1,85 @@
-<!-- Header -->
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="height: 200px; background-color: #04aaf2">
-  <!-- Mask -->
-  <span class="mask opacity-8"></span>
-  <!-- Header container -->
-  <div class="container-fluid d-flex align-items-center">
-    <div class="col-md-12 col-xl-12">
-      <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white">Profiles</h1>
-      </div>
-      <div class="col-md-12">
-        <form class="example-form">
-          <mat-form-field class="col-md-10" appearance="outline">
-            <mat-label>Search Profiles</mat-label>
 
-            <span matPrefix>
-              <mat-icon>search</mat-icon> &nbsp;
-            </span>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Search Profiles" #input>
-
-          </mat-form-field>
-          <button mat-flat-button>
-            <mat-icon>search</mat-icon>
-          </button>
-        </form>
-
-      </div>
+<app-page-banner [initailTemplate]="profileSearch"></app-page-banner>
+<ng-template #profileSearch>
+  <div class="col-md-12 container-fluid">
+    <div class="col-lg-7 col-md-10">
+      <h1 class="text-white">{{pageTitle}}</h1>
     </div>
+    <form class="example-form">
+      <mat-form-field class="col-md-10" appearance="outline">
+        <mat-label>Search Profiles</mat-label>
+        <span matPrefix>
+          <mat-icon>search</mat-icon> &nbsp;
+        </span>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Profiles" #input>
+      </mat-form-field>
+      <button mat-flat-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
   </div>
-</div>
-<div class="mat-elevation-z8 col-md-12">
-  <table mat-table [dataSource]="dataSource" matSort>
+</ng-template>
 
-    <!-- <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
-      View
-      </th>
-      <td mat-cell *matCellDef="let row">
-        <!-- <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)"
-                      [aria-label]="checkboxLabel(row)">
-        </mat-checkbox>
-        <button mat-flat-button>View</button>
-      </td>
-    </ng-container> -->
-    <ng-container matColumnDef="photo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-      <td mat-cell *matCellDef="let row">
-        <img src="{{row.photo}}"></td>
-    </ng-container>
+<div class="profiles-page-container">
+  <div class="container">
+    <app-progress-spinner [isVisible]="isLoading"></app-progress-spinner>
+  </div>
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Local ID </th>
-      <td mat-cell *matCellDef="let row"> {{row.localid}} </td>
-    </ng-container>
+  <div *ngIf="!isLoading">
+    <table mat-table [dataSource]="dataSource" matSort #profilesTbSort="matSort">
+      <ng-container matColumnDef="photo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+        <td mat-cell *matCellDef="let row">
+          <img class="profile-img-circle" src="{{row.photo}}" /></td>
+      </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Address </th>
-      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
-    </ng-container>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Local ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.localid}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let row"> {{row.prefix}}. {{row.firstName}} {{row.lastName}}</td>
-    </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Address </th>
+        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
-      <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.prefix}}. {{row.first_name}} {{row.last_name}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
-      <td mat-cell *matCellDef="let row"> {{row.address}} </td>
-    </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="modified">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Modified </th>
-      <td mat-cell *matCellDef="let row"> {{row.modified}} </td>
-    </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+        <td mat-cell *matCellDef="let row"> {{row.address}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="view">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> View </th>
-      <td mat-cell *matCellDef="let row">
-        <mat-icon>navigate_next</mat-icon>
-      </td>
+      <ng-container matColumnDef="modified">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Modified </th>
+        <td mat-cell *matCellDef="let row"> {{row.modified | date:'yyyy-mm-dd'}} </td>
+      </ng-container>
 
-    </ng-container>
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> View </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon>navigate_next</mat-icon>
+        </td>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/profile/detail/', row.localid]"></tr>
+      </ng-container>
 
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-    </tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/profile/detail/', row.localid]">
+      </tr>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4"> {{noDataMatchString}}</td>
+      </tr>
+    </table>
+    <mat-paginator  #paginator  [pageSizeOptions]="[ 10,100, 250, 500]"  aria-label="Select page of users" showFirstLastButtons></mat-paginator>
+  </div>
 </div>

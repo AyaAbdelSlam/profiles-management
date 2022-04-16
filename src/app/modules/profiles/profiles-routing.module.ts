@@ -7,11 +7,17 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 const routes: Routes = [
   {
     path: 'search',
-    component: ProfilesListComponent
+    component: ProfilesListComponent,
+    data:{
+      title: 'Profiles'
+    }
   },
   {
     path: 'detail/:profileId',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    data:{
+      title: 'Profile:'
+    }
   },
 
 ];

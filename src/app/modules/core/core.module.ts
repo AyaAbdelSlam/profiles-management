@@ -1,16 +1,16 @@
+import { PageFooterComponent } from './components/page-footer/page-footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './components/footer/footer.component';
 
 
 
 @NgModule({
   declarations: [
-    FooterComponent
+    PageFooterComponent
   ],
   imports: [
     CommonModule
   ],
-  exports:[FooterComponent]
+  exports: [PageFooterComponent]
 })
 export class CoreModule { }
