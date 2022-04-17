@@ -24,7 +24,7 @@ describe('AppComponent', () => {
         MaterialExampleModule,
         CoreModule,
         SharedModule
-    ],
+      ],
       declarations: [
         AppComponent
       ],

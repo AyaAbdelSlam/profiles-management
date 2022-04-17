@@ -8,9 +8,9 @@ describe('PageBannerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageBannerComponent ]
+      declarations: [PageBannerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

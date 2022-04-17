@@ -8,14 +8,14 @@ const routes: Routes = [
   {
     path: 'search',
     component: ProfilesListComponent,
-    data:{
+    data: {
       title: 'Profiles'
     }
   },
   {
     path: 'detail/:profileId',
     component: UserProfileComponent,
-    data:{
+    data: {
       title: 'Profile:'
     }
   },

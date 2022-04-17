@@ -1,11 +1,10 @@
-
 <app-page-banner [initailTemplate]="profileSearch"></app-page-banner>
 <ng-template #profileSearch>
   <div class="col-md-12 container-fluid">
     <div class="col-lg-7 col-md-10">
       <h1 class="text-white">{{pageTitle}}</h1>
     </div>
-    <form class="example-form">
+    <form>
       <mat-form-field class="col-md-10" appearance="outline">
         <mat-label>Search Profiles</mat-label>
         <span matPrefix>
@@ -80,6 +79,7 @@
         <td class="mat-cell" colspan="4"> {{noDataMatchString}}</td>
       </tr>
     </table>
-    <mat-paginator  #paginator  [pageSizeOptions]="[ 10,100, 250, 500]"  aria-label="Select page of users" showFirstLastButtons></mat-paginator>
+    <mat-paginator #paginator [pageSizeOptions]="[ 10,100, 250, 500]" aria-label="Select page of users"
+      showFirstLastButtons></mat-paginator>
   </div>
 </div>

@@ -17,7 +17,7 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[
+      imports: [
         RouterTestingModule,
         HttpClientTestingModule,
         AppRoutingModule,
@@ -29,9 +29,9 @@ describe('UserProfileComponent', () => {
         CoreModule,
         SharedModule
       ],
-      declarations: [ UserProfileComponent ]
+      declarations: [UserProfileComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

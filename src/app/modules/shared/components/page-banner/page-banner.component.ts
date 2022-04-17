@@ -7,12 +7,12 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 })
 export class PageBannerComponent implements OnInit {
 
-  @Input() initailTemplate :TemplateRef<any>;
+  @Input() initailTemplate: TemplateRef<any>;
   currentTemplate: TemplateRef<any>;
   constructor() { }
 
   ngOnInit(): void {
-this.currentTemplate = this.initailTemplate;
+    this.currentTemplate = this.initailTemplate;
   }
 
 }

@@ -17,25 +17,25 @@ describe('UserProfileDetailsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-          AppRoutingModule,
-          BrowserAnimationsModule,
-          CommonModule,
-          FormsModule,
-          ReactiveFormsModule,
-          MaterialExampleModule
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialExampleModule
       ],
       providers:
-      [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            snapshot: {params: {profileId: '1'}}
+        [
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              snapshot: { params: { profileId: '1' } }
+            }
           }
-        }
-      ],
-      declarations: [ UserProfileDetailsComponent ]
+        ],
+      declarations: [UserProfileDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -8,9 +8,9 @@ describe('UserProfileFactsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserProfileFactsComponent ]
+      declarations: [UserProfileFactsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
